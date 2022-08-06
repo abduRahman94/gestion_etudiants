@@ -25,5 +25,7 @@ urlpatterns = [
     path('parent/', views.display_base, name='parent'),
     path('child/', views.display_child, name='child'),
     path('detail/<int:id>', views.detail, name='detail'),
+    path('update-form/<int:id>', views.form_update, name='update-form'),
+    path('update/<int:id>', views.update, name='update'),
     #    chemin                      vue              nom
     ]

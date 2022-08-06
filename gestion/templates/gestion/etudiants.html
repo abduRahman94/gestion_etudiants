@@ -31,20 +31,17 @@
             </th>
         </thead>
         <tbody>
-    {% if etat %}
         {% for etudiant in etudiants %}
             <tr>
                 <td>{{ etudiant.nom | title }}</td>
                 <td>{{ etudiant.prenom | title }}</td> 
                 <td>{{ etudiant.age }}</td>
                 <td><a href="{% url 'detail' etudiant.id %}">detail</a></td>
-                <td><a href="#">modifier</a></td>
+                <td><a href="{% url 'update-form' etudiant.id %}">modifier</a></td>
                 <td><a href="#">supprimer</a></td>
             </tr>
         {% endfor %}
-    {% else %}
-        <p>Il n'y a pas d'étudiants</p>
-    {% endif %}
+
         </tbody>
     </table>
 </body>

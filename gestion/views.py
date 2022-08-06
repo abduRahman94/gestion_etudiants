@@ -31,4 +31,25 @@ def detail(request, id):
     etudiant = Etudiant.objects.get(pk=id)
     
     return render(request, 'gestion/detail.html', {'etudiant': etudiant})
+
+
+def form_update(request, id):
+    etudiant = Etudiant.objects.get(pk=id)
+    return render(request, 'gestion/update_form.html', {'etudiant': etudiant})
+
+
+def update(request, id):
+    if request.method == 'POST':
+        etudiant = Etudiant.objects.get(pk=id)
+        new_age = request.POST.get('age')
+        new_nom = request.POST.get('nom')
+        new_prenom = request.POST.get('prenom')
+
+        etudiant.age, etudiant.nom, etudiant.prenom = new_age, new_nom, new_prenom
+        etudiant.save()
+        
+        return render(request, 'gestion/etudiants.html', {'etudiants': Etudiant.objects.all()})
+    else:
+        return render(request, 'gestion/update_form.html')
+    
             
