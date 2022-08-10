@@ -7,4 +7,5 @@ class Etudiant(models.Model):
     nom = models.CharField(max_length=200)
     prenom = models.CharField(max_length=200)
     age = models.IntegerField()
+    parcours = models.CharField(max_length=200, null=True)
 

@@ -19,7 +19,8 @@ from gestion import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('etudiants/', views.EtudiantsView.as_view(), name='etudiants'),
+    path('', views.EtudiantsView.as_view(), name='etudiants'),
+    # path('etudiants/', views.EtudiantsView.as_view(), name='etudiants'),
     path('etudiant/', views.etudiant, name='etudiant'),
     path('etudiant/<int:id>', views.etudiant, name='etudiant'),
     path('parent/', views.display_base, name='parent'),
@@ -27,5 +28,6 @@ urlpatterns = [
     path('detail/<int:id>', views.detail, name='detail'),
     path('update-form/<int:id>', views.form_update, name='update-form'),
     path('update/<int:id>', views.update, name='update'),
+    path('ajout-etudiant/', views.ajout_form, name='ajout-form')
     #    chemin                      vue              nom
     ]

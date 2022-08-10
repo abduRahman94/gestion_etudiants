@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 from .models import Etudiant
+from .forms import EtudiantForm
 
 # Create your views here.
 
@@ -53,3 +54,15 @@ def update(request, id):
         return render(request, 'gestion/update_form.html')
     
             
+
+def ajout_form(request):
+    if request.method == 'GET':
+        form = EtudiantForm()
+        return render(request, 'gestion/ajout_etudiant.html', {'form': form})
+    elif request.method == 'POST':
+        form = EtudiantForm(request.POST)
+        
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            Etudiant.objects.create(**cleaned_data)
+            return render(request, 'gestion/etudiants.html', {'etudiants': Etudiant.objects.all()})
